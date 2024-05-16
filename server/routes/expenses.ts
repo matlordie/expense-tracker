@@ -41,5 +41,3 @@ export const expensesRoutes = new Hono()
     }
     return c.json({ expense });
   });
-
-// delete
