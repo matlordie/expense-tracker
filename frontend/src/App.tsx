@@ -6,13 +6,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { api } from "./lib/api";
 
 function App() {
   const [totalSpent, setTotalSpent] = useState(0);
 
   useEffect(() => {
     async function fetchTotalSpent() {
-      const res = await fetch("/api/expenses/total-spent");
+      const res = await api.expenses["total-spent"].$get();
       const data = await res.json();
       setTotalSpent(data);
     }
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <>
-      <div className="max-w-md mx-auto">
+      <div className="max-w-md mx-auto p-5">
         <Card>
           <CardHeader>
             <CardTitle>Total Spent</CardTitle>
