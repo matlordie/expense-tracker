@@ -26,11 +26,12 @@ export const expensesRoutes = new Hono()
     c.status(201);
     return c.json(expenses);
   })
-  .get("/total-spent", (c) => {
+  .get("/total-spent", async (c) => {
     const total = fakeExpenses.reduce(
       (sum, expense) => sum + expense.amount,
       0
     );
+    await new Promise((r) => setTimeout(r, 1000));
     return c.json(total);
   })
   .get("/:id{[0-9]+}", (c) => {
