@@ -31,7 +31,6 @@ export const expensesRoutes = new Hono()
       (sum, expense) => sum + expense.amount,
       0
     );
-    await new Promise((r) => setTimeout(r, 1000));
     return c.json(total);
   })
   .get("/:id{[0-9]+}", (c) => {
