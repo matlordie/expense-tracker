@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const skeletonCount = [1, 2, 3, 4];
+const skeletonCount = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
 export const Route = createFileRoute("/expenses")({
   component: Expenses,
@@ -48,8 +48,8 @@ function Expenses() {
           </TableHeader>
           <TableBody>
             {isPending
-              ? skeletonCount.map(() => (
-                  <TableRow>
+              ? skeletonCount.map((skeleton) => (
+                  <TableRow key={skeleton.id}>
                     <TableCell className="font-medium">
                       <Skeleton className="h-4" />
                     </TableCell>
@@ -62,7 +62,7 @@ function Expenses() {
                   </TableRow>
                 ))
               : data?.expense.map((expense) => (
-                  <TableRow>
+                  <TableRow key={expense.id}>
                     <TableCell className="font-medium">{expense.id}</TableCell>
                     <TableCell>{expense.title}</TableCell>
                     <TableCell>{expense.amount}</TableCell>
