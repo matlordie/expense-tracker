@@ -20,7 +20,7 @@ function createExpense() {
       if (!res.ok) {
         throw new Error("an error occured");
       }
-      await new Promise((r) => setTimeout(r, 3000));
+      await new Promise((r) => setTimeout(r, 1000));
       console.log(value);
     },
   });
