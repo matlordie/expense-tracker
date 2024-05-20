@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useForm } from "@tanstack/react-form";
 import { api } from "@/lib/api";
 
@@ -10,6 +10,7 @@ export const Route = createFileRoute("/create-expense")({
 });
 
 function createExpense() {
+  const navigate = useNavigate();
   const form = useForm({
     defaultValues: {
       title: "",
@@ -21,6 +22,7 @@ function createExpense() {
         throw new Error("an error occured");
       }
       await new Promise((r) => setTimeout(r, 1000));
+      navigate({ to: "/" });
       console.log(value);
     },
   });
