@@ -54,7 +54,7 @@ function createExpense() {
           name="amount"
           children={(field) => (
             <>
-              <Label htmlFor={field.name}>Title:</Label>
+              <Label htmlFor={field.name}>Amount:</Label>
               <Input
                 id={field.name}
                 name={field.name}
