@@ -22,7 +22,7 @@ function createExpense() {
         throw new Error("an error occured");
       }
       await new Promise((r) => setTimeout(r, 1000));
-      navigate({ to: "/" });
+      navigate({ to: "/expenses" });
       console.log(value);
     },
   });
@@ -70,7 +70,7 @@ function createExpense() {
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
             <Button type="submit" disabled={!canSubmit} className="mt-3">
-              {isSubmitting ? "..." : "Submit"}
+              {isSubmitting ? "Submiting..." : "Submit"}
             </Button>
           )}
         />
