@@ -1,5 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/lib/api";
+import { checkAuth } from "@/lib/auth-checker";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -8,6 +9,7 @@ export const Route = createFileRoute("/profile")({
 });
 
 function Profile() {
+  checkAuth();
   async function getUserProfile() {
     const res = await api.profile.$get();
     await new Promise((r) => setTimeout(r, 1000));

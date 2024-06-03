@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import { checkAuth } from "@/lib/auth-checker";
 
 const skeletonCount = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/expenses")({
 });
 
 function Expenses() {
+  checkAuth();
   async function fetchExpenses() {
     const res = await api.expenses.$get();
     if (!res.ok) {

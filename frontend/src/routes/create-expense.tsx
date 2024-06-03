@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useForm } from "@tanstack/react-form";
 import { api } from "@/lib/api";
+import { checkAuth } from "@/lib/auth-checker";
 
 export const Route = createFileRoute("/create-expense")({
   component: createExpense,
 });
 
 function createExpense() {
+  checkAuth();
   const navigate = useNavigate();
   const form = useForm({
     defaultValues: {

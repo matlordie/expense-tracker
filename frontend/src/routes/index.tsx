@@ -9,12 +9,14 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "../lib/api";
 import { useQuery } from "@tanstack/react-query";
+import { checkAuth } from "@/lib/auth-checker";
 
 export const Route = createFileRoute("/")({
   component: App,
 });
 
 function App() {
+  checkAuth();
   async function fetchTotalExpense() {
     const res = await api.expenses["total-spent"].$get();
     if (!res.ok) {
